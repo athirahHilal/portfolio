@@ -52,15 +52,19 @@ const Education = forwardRef<HTMLDivElement, EducationProps>(({ isLoading }, ref
     },
   ];
 
-  useGSAP(() => {
-    gsap.from(".education-card", {
-      y: 40,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.2,
-      ease: "power2.out",
-    });
-  }, []);
+    useGSAP(() => {
+    if (ref && typeof ref !== "function" && ref.current) {
+        gsap.from(ref.current.querySelectorAll(".education-card"), {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power2.out",
+        delay: isLoading ? 6.4 : 0.2, 
+        });
+    }
+    }, [isLoading]);
+
 
   const handleViewResults = (images: StaticImageData[]) => {
     setSelectedResults(images);
