@@ -33,34 +33,34 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(({ isLoading }, ref) 
 
   const projects: Project[] = useMemo(() => [
     {
-      title: "Personal Portfolio",
-      description: "A responsive portfolio website showcasing my skills and projects, built with Next.js and styled with Tailwind CSS.",
-      technologies: ["Next.js", "Tailwind CSS", "TypeScript", "GSAP"],
-      github: "https://github.com/athirahHilal/portfolio",
-      demo: "https://athirahhilal.vercel.app",
+      title: "UPTM RoomEase Portal",
+      description:
+        "RoomEase is a mobile application developed using React Native for staff room management and access at UPTM. It features a role-based interface for admin, staff, and student access. Twilio is used for SMS notifications, SendGrid for email alerts, and Mapedin provides a 3D interactive map. Pocketbase serves as the real-time backend handling storage and user authentication.",
+      technologies: ["React Native", "Pocketbase", "Twilio", "SendGrid", "Mapedin"],
+      github: "https://github.com/athirahHilal/Room_Ease_Project",
       images: [portfolio1, portfolio2],
     },
     {
-      title: "Task Manager App",
-      description: "A web app for managing tasks with CRUD functionality, user authentication, and a clean UI.",
-      technologies: ["React", "Firebase", "Tailwind CSS"],
-      github: "https://github.com/athirahHilal/task-manager",
-      demo: "https://task-manager-athirah.web.app",
+      title: "Bubble Blush",
+      description:
+        "Bubble Blush is a mobile e-commerce app built with React Native for Android and iOS platforms. It allows users to browse products, manage their cart, complete purchases, and review order history. The backend is powered by Pocketbase, enabling real-time data storage and session handling.",
+      technologies: ["React Native", "Pocketbase"],
+      github: "https://github.com/athirahHilal/BubbleBlush_project",
       images: [task1, task2],
     },
     {
-      title: "E-Commerce Store",
-      description: "A full-stack e-commerce platform with product listings, cart, and payment integration.",
-      technologies: ["Next.js", "Stripe", "MongoDB", "Tailwind CSS"],
-      github: "https://github.com/athirahHilal/ecommerce",
+      title: "TechNest",
+      description:
+        "TechNest is a responsive e-commerce website developed using PHP, HTML, CSS, and Bootstrap, designed to showcase and sell electronic gadgets. It supports admin and customer roles with dedicated access, offering product listings, shopping cart functionality, and a basic checkout flow. MySQL is used for data management.",
+      technologies: ["PHP", "HTML", "CSS", "Bootstrap", "MySQL"],
+      github: "https://github.com/athirahHilal/TechNest_Project",
       images: [ecommerce1, ecommerce2],
     },
     {
-      title: "Blog Platform",
-      description: "A simple blog system with markdown support, dark mode toggle, and smooth animations.",
-      technologies: ["Next.js", "MDX", "Tailwind CSS"],
-      github: "https://github.com/athirahHilal/blog-platform",
-      demo: "https://athirah-blog.vercel.app",
+      title: "NichiPulse",
+      description:
+        "NichiPulse is a web-based system for managing industrial machines, built using React and Pocketbase. I contributed to frontend and backend development as part of a collaborative team. This project involved real-world system integration, debugging, and team-based version control practices.",
+      technologies: ["React", "Pocketbase"],
       images: [blog1],
     },
   ], []);
@@ -89,10 +89,6 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(({ isLoading }, ref) 
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % projects.length);
-  };
-
-  const handleDotClick = (index: number) => {
-    setCurrentIndex(index);
   };
 
   const handleImageDotClick = (projectIndex: number, imageIndex: number) => {
@@ -148,7 +144,21 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(({ isLoading }, ref) 
                     )
                   }
                 >
-                  <div className="w-full max-w-screen-md bg-background/50 border border-[#f2acb2]/30 rounded-lg overflow-hidden hover:shadow-lg hover:border-[#f2acb2] transition-all duration-300">
+                  <div className="relative w-full max-w-screen-md bg-background/50 border border-[#f2acb2]/30 rounded-lg overflow-hidden hover:shadow-lg hover:border-[#f2acb2] transition-all duration-300">
+                    <button
+                      onClick={handlePrev}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 text-[#f2acb2] hover:text-[#ea5f9f] transition-colors duration-200 z-10 bg-background/50 p-2 rounded-full"
+                      aria-label="Previous project"
+                    >
+                      <FaArrowLeft size={24} />
+                    </button>
+                    <button
+                      onClick={handleNext}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-[#f2acb2] hover:text-[#ea5f9f] transition-colors duration-200 z-10 bg-background/50 p-2 rounded-full"
+                      aria-label="Next project"
+                    >
+                      <FaArrowRight size={24} />
+                    </button>
                     <div className="relative w-full h-[400px] overflow-hidden">
                       {project.images.map((image, imageIndex) => (
                         <Image
@@ -163,28 +173,27 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(({ isLoading }, ref) 
                           }`}
                         />
                       ))}
-                    </div>
-
-                    <div className="flex justify-center gap-2 mt-2">
-                      {project.images.map((_, imageIndex) => (
-                        <button
-                          key={imageIndex}
-                          onClick={() =>
-                            handleImageDotClick(projectIndex, imageIndex)
-                          }
-                          className={`w-3.5 h-3.5 rounded-full transition-all duration-300 ${
-                            imageIndex === imageIndices[projectIndex]
-                              ? "bg-[#f2acb2] scale-125"
-                              : "bg-[#f2acb2]/30 hover:bg-[#f2acb2]/60"
-                          }`}
-                          aria-label={`View image ${imageIndex + 1} for ${project.title}`}
-                        />
-                      ))}
+                      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+                        {project.images.map((_, imageIndex) => (
+                          <button
+                            key={imageIndex}
+                            onClick={() =>
+                              handleImageDotClick(projectIndex, imageIndex)
+                            }
+                            className={`w-3.5 h-3.5 rounded-full transition-all duration-300 ${
+                              imageIndex === imageIndices[projectIndex]
+                                ? "bg-[#f2acb2] scale-125"
+                                : "bg-[#f2acb2]/30 hover:bg-[#f2acb2]/60"
+                            }`}
+                            aria-label={`View image ${imageIndex + 1} for ${project.title}`}
+                          />
+                        ))}
+                      </div>
                     </div>
 
                     <div className="p-6 flex flex-col gap-4">
                       <h2 className="text-2xl font-bold text-[#f2acb2]">{project.title}</h2>
-                      <p className="text-base text-text leading-relaxed">
+                      <p className="text-xs text-text leading-relaxed">
                         {project.description}
                       </p>
                       <div className="flex flex-wrap gap-2">
@@ -224,37 +233,6 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(({ isLoading }, ref) 
                 </div>
               ))}
             </div>
-          </div>
-
-          <div className="flex items-center justify-between mt-6 max-w-full px-4">
-            <button
-              onClick={handlePrev}
-              className="text-[#f2acb2] hover:text-[#ea5f9f] transition-colors duration-200"
-              aria-label="Previous project"
-            >
-              <FaArrowLeft size={24} />
-            </button>
-            <div className="flex justify-center gap-2">
-              {projects.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleDotClick(index)}
-                  className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                    index === currentIndex
-                      ? "bg-[#f2acb2] scale-125"
-                      : "bg-[#f2acb2]/30 hover:bg-[#f2acb2]/60"
-                  }`}
-                  aria-label={`Go to project ${index + 1}`}
-                />
-              ))}
-            </div>
-            <button
-              onClick={handleNext}
-              className="text-[#f2acb2] hover:text-[#ea5f9f] transition-colors duration-200"
-              aria-label="Next project"
-            >
-              <FaArrowRight size={24} />
-            </button>
           </div>
         </div>
       </div>

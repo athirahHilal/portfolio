@@ -73,7 +73,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>(({ isLoading, aboutRef },
         />
       </svg>
       <p className="loader-text text-xl font-semibold text-foreground mt-4">
-        Loading Athirah&apos;s Resume!
+        Loading Athirah&apos;s Portfolio!
       </p>
     </div>
   );
