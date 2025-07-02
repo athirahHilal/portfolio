@@ -16,11 +16,7 @@ import {
   FaServer,
   FaCloud,
   FaGitAlt,
-  FaPlug,
   FaCode,
-  FaSms,
-  FaEnvelope,
-  FaMap,
   FaCheckCircle,
   FaBug,
 } from "react-icons/fa";
