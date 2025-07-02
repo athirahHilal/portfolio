@@ -42,15 +42,19 @@ const Achievement = forwardRef<HTMLDivElement, AchievementProps>(({ isLoading },
     },
   ];
 
-  useGSAP(() => {
-    gsap.from(".achievement-card", {
-      opacity: 0,
-      y: 30,
-      duration: 1,
-      stagger: 0.2,
-      ease: "power2.out",
-    });
-  }, []);
+    useGSAP(() => {
+    if (ref && typeof ref !== "function" && ref.current) {
+        gsap.from(ref.current.querySelectorAll(".achievement-card"), {
+        opacity: 0,
+        y: 30,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power2.out",
+        delay: isLoading ? 6.4 : 0.4,
+        });
+    }
+    }, [isLoading]);
+
 
   return (
     <section
@@ -111,7 +115,7 @@ const Achievement = forwardRef<HTMLDivElement, AchievementProps>(({ isLoading },
             <FaTwitter className="hover:text-white transition" />
           </a>
         </div>
-        <p>© {new Date().getFullYear()} Athirah's Portfolio. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Athirah&apos;s Portfolio. All rights reserved.</p>
       </footer>
     </section>
   );

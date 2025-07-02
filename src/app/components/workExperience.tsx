@@ -2,7 +2,6 @@
 import { forwardRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { FaBriefcase } from "react-icons/fa";
 
 interface WorkExperience {
   title: string;
@@ -37,14 +36,13 @@ const WorkExperience = forwardRef<HTMLDivElement, WorkExperienceProps>(({ isLoad
       y: 40,
       opacity: 0,
       duration: 1,
+      delay: isLoading ? 5.4 : 0,
       stagger: 0.2,
       ease: "power2.out",
     });
-  }, []);
+  }, [isLoading]);
 
-  // Function to split description into bullet points with hanging indent
   const renderDescription = (description: string) => {
-    // Split by periods, trim whitespace, and filter out empty strings
     const points = description
       .split(".")
       .map((point) => point.trim())
@@ -74,14 +72,12 @@ const WorkExperience = forwardRef<HTMLDivElement, WorkExperienceProps>(({ isLoad
             key={index}
             className="timeline-entry mb-14 relative w-full flex flex-col sm:flex-row sm:items-start sm:justify-between"
           >
-            {/* Dot */}
             <div className="hidden sm:block absolute left-1/2 -translate-x-1/2 top-6 w-5 h-5 rounded-full bg-[#f2acb2] z-10 border-4 border-black" />
 
-            {/* Content Box */}
             <div
               className={`sm:w-[47%] ${index % 2 === 0 ? "sm:ml-auto" : "sm:mr-auto"} bg-[#1c1c1c] p-4 sm:p-6 rounded-xl shadow-md`}
             >
-              <h3 className="text-lg sm:text-xl font-semibold text-[#f2acb2] flex items-center gap-2">
+              <h3 className="text-lg sm:text-xl font-semibold text-[#f2acb2]">
                 {work.title}
               </h3>
               <p className="text-sm sm:text-base text-gray-300">{work.company}</p>

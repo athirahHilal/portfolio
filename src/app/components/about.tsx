@@ -96,13 +96,13 @@ const About = forwardRef<HTMLDivElement, AboutProps>(({ isLoading }, ref) => {
           <div className="flex flex-col justify-center gap-12 text-center lg:text-left lg:ml-20">
             <div>
               <p className="text-xl font-semibold uppercase text-[#f2acb2]">Full_Name</p>
-              <p className="text-base text-text">"Nur Athirah Binti Hilalluddin"</p>
+              <p className="text-base text-text"><span>&quot;Nur Athirah Binti Hilalluddin&quot;</span></p>
             </div>
             <div>
               <p className="text-xl font-semibold uppercase text-[#f2acb2]">E-Mail</p>
               <p className="text-base text-text">
                 <a href="mailto:athirahhilalluddin@gmail.com" className="hover:underline">
-                  "athirahhilalluddin@gmail.com"
+                  <span>&quot;athirahhilalluddin@gmail.com</span>
                 </a>
               </p>
             </div>
@@ -115,18 +115,19 @@ const About = forwardRef<HTMLDivElement, AboutProps>(({ isLoading }, ref) => {
                   rel="noopener noreferrer"
                   className="hover:underline"
                 >
-                  "https://github.com/athirahHilal"
+                  <span>&quot;https://github.com/athirahHilal</span>
                 </a>
               </p>
             </div>
           </div>
         </div>
-        <p className="text-lg leading-relaxed text-text text-center">
-          print ("I’m a final-year Diploma in Computer Science student with a passion for tech and a drive 
-          to keep learning and growing. While I’m still building my experience, I’m a fast learner who enjoys 
-          taking on new challenges. I work well with others, love exchanging ideas, and believe in showing up with a 
-          positive attitude, staying honest, and always giving my best.")
-        </p>
+          <p className="text-lg leading-relaxed text-text text-center">
+            print (<span>&quot;I’m a final-year Diploma in Computer Science student with a passion for tech and a drive 
+            to keep learning and growing. While I’m still building my experience, I’m a fast learner who enjoys 
+            taking on new challenges. I work well with others, love exchanging ideas, and believe in showing up with a 
+            positive attitude, staying honest, and always giving my best.&quot;</span>)
+          </p>
+
         <a
           href="/CV_Athirah.pdf"
           download="CV_Athirah.pdf"

@@ -1,5 +1,5 @@
 "use client";
-import { forwardRef, useState, useEffect } from "react";
+import { forwardRef, useState, useEffect, useMemo } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
@@ -31,7 +31,7 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(({ isLoading }, ref) 
   const [imageIndices, setImageIndices] = useState<number[]>([]);
   const [isPaused, setIsPaused] = useState<boolean[]>([]);
 
-  const projects: Project[] = [
+  const projects: Project[] = useMemo(() => [
     {
       title: "Personal Portfolio",
       description: "A responsive portfolio website showcasing my skills and projects, built with Next.js and styled with Tailwind CSS.",
@@ -63,12 +63,12 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(({ isLoading }, ref) 
       demo: "https://athirah-blog.vercel.app",
       images: [blog1],
     },
-  ];
+  ], []);
 
   useEffect(() => {
     setImageIndices(projects.map(() => 0));
     setIsPaused(projects.map(() => false));
-  }, [projects.length]);
+  }, [projects]);
 
   useEffect(() => {
     const intervals = projects.map((project, index) =>
@@ -149,7 +149,6 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(({ isLoading }, ref) 
                   }
                 >
                   <div className="w-full max-w-screen-md bg-background/50 border border-[#f2acb2]/30 rounded-lg overflow-hidden hover:shadow-lg hover:border-[#f2acb2] transition-all duration-300">
-                    {/* Fixed image container */}
                     <div className="relative w-full h-[400px] overflow-hidden">
                       {project.images.map((image, imageIndex) => (
                         <Image
@@ -166,7 +165,6 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(({ isLoading }, ref) 
                       ))}
                     </div>
 
-                    {/* Image dots */}
                     <div className="flex justify-center gap-2 mt-2">
                       {project.images.map((_, imageIndex) => (
                         <button
@@ -184,7 +182,6 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(({ isLoading }, ref) 
                       ))}
                     </div>
 
-                    {/* Text content */}
                     <div className="p-6 flex flex-col gap-4">
                       <h2 className="text-2xl font-bold text-[#f2acb2]">{project.title}</h2>
                       <p className="text-base text-text leading-relaxed">
@@ -229,7 +226,6 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(({ isLoading }, ref) 
             </div>
           </div>
 
-          {/* Navigation */}
           <div className="flex items-center justify-between mt-6 max-w-full px-4">
             <button
               onClick={handlePrev}
