@@ -96,7 +96,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>(
           />
         </svg>
         <p
-          className="loader-text text-xl font-semibold text-foreground mt-4"
+        className="loader-text text-sm sm:text-base md:text-xl font-semibold text-foreground mt-4"
           style={{ willChange: "transform" }}
         >
         &quot;Loading Athirah&apos;s Portfolio!&quot;
