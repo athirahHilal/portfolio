@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 gsap.registerPlugin();
 import Image, { StaticImageData } from "next/image";
+import { FaArrowUp } from "react-icons/fa";
 
 import portfolio from "../asset/image/portfolio.png";
 import portfolio1 from "../asset/image/p1.png";
@@ -25,7 +26,9 @@ interface ProjectsProps {
 }
 
 const Projects = forwardRef<HTMLDivElement, ProjectsProps>(({ isLoading }, ref) => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
 
   const projects: Project[] = useMemo(
     () => [
@@ -100,75 +103,124 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(({ isLoading }, ref) 
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full max-w-screen-xl">
         {projects.map((project, index) => {
-          const isActive = activeIndex === index;
-
+          const isOpen = openIndex === index;
           return (
             <div
               key={index}
-              className="relative w-full"
-              onClick={() => setActiveIndex(isActive ? null : index)}
+              className="relative w-full border-4 border-[#f2acb2] rounded-lg overflow-hidden group transition-all duration-300"
             >
-              <div className="relative w-full border-4 border-[#f2acb2] rounded-lg overflow-hidden">
+              {/* Image View */}
+              <div
+                className="relative w-full h-[auto] min-h-0 aspect-video bg-white"
+                onClick={() => {
+                  if (isMobile) {
+                    setOpenIndex(isOpen ? null : index);
+                  }
+                }}
+              >
                 <Image
                   src={project.images[0]}
                   alt={project.title}
-                  width={800}
-                  height={600}
-                  layout="responsive"
-                  objectFit="contain"
-                  className={`transition-opacity duration-300 ${
-                    isActive ? "opacity-0" : "opacity-100"
-                  }`}
+                  fill
+                  style={{ objectFit: "contain", objectPosition: "center" }}
+                  className="!m-0 !p-0 block"
                 />
-                <div className="absolute bottom-0 w-full bg-black/60 text-white text-center py-2 z-10">
-                  <h2 className="text-lg font-semibold px-2">{project.title}</h2>
-                </div>
               </div>
 
-              <div
-                className={`transition-all duration-500 ease-in-out bg-background/95 backdrop-blur-md rounded-lg border-4 border-[#f2acb2] overflow-hidden px-4 pt-5 ${
-                  isActive ? "max-h-[1000px] py-6 opacity-100" : "max-h-0 opacity-0"
-                }`}
-              >
-                <h2 className="text-2xl font-bold text-[#f2acb2] text-center">{project.title}</h2>
-                <p className="text-sm text-text leading-relaxed mt-4 text-justify">
-                  {project.description}
-                </p>
+              {/* Desktop Content on Hover */}
+              {!isMobile && (
+                <div className="absolute inset-0 w-full h-full bg-background/95 backdrop-blur-md text-text p-4 flex flex-col min-h-full opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
+                  <h2 className="text-2xl font-bold text-[#f2acb2] text-center">{project.title}</h2>
+                  <p className="text-sm leading-relaxed mt-4 text-justify flex-grow">{project.description}</p>
 
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.technologies.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="text-sm text-text bg-[#f2acb2]/20 px-3 py-1 rounded font-mono"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                  <div className="mt-auto mb-4">
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech, i) => (
+                        <span
+                          key={i}
+                          className="text-sm bg-[#f2acb2]/20 px-3 py-1 rounded font-mono"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
 
-                <div className="flex gap-6 mt-4">
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-text hover:text-[#ea5f9f] underline"
-                    >
-                      GitHub
-                    </a>
-                  )}
-                  {project.demo && (
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-text hover:text-[#ea5f9f] underline"
-                    >
-                      Live Demo
-                    </a>
-                  )}
+                    <div className="flex gap-6 mt-4">
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm hover:text-[#ea5f9f] underline"
+                        >
+                          GitHub
+                        </a>
+                      )}
+                      {project.demo && (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm hover:text-[#ea5f9f] underline"
+                        >
+                          Live Demo
+                        </a>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
+              )}
+
+              {/* Mobile Content Below */}
+              {isMobile && isOpen && (
+                <div className="w-full bg-background/95 backdrop-blur-md text-text p-4 flex flex-col border-t border-[#f2acb2]">
+                  <h2 className="text-2xl font-bold text-[#f2acb2] text-center">{project.title}</h2>
+                  <p className="text-sm leading-relaxed mt-4 text-justify">{project.description}</p>
+
+                  <div className="mt-4">
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech, i) => (
+                        <span
+                          key={i}
+                          className="text-sm bg-[#f2acb2]/20 px-3 py-1 rounded font-mono"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex gap-6 mt-4">
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm hover:text-[#ea5f9f] underline"
+                        >
+                          GitHub
+                        </a>
+                      )}
+                      {project.demo && (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm hover:text-[#ea5f9f] underline"
+                        >
+                          Live Demo
+                        </a>
+                      )}
+                    </div>
+                  </div>
+
+                  <button
+                    className="mt-6 w-full bg-[#f2acb2] text-black py-2 flex items-center justify-center"
+                    onClick={() => setOpenIndex(null)}
+                  >
+                    <FaArrowUp className="text-lg" />
+                  </button>
+                </div>
+              )}
             </div>
           );
         })}

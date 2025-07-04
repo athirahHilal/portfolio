@@ -56,7 +56,7 @@ export default function Header({
         </ul>
 
         <button
-          className="md:hidden text-[#ea5f9f] focus:outline-none hover:scale-110 transition-transform duration-200"
+          className="md:hidden text-[#f2acb2] focus:outline-none hover:scale-110 transition-transform duration-200"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
