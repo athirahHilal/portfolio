@@ -93,17 +93,11 @@ const About = forwardRef<HTMLDivElement, AboutProps>(({ isLoading }, ref) => {
 
         </div>
 
-        <p
-          className="text-lg leading-relaxed text-text text-center"
-          style={{ willChange: "opacity, transform" }}
-        >
+        <p className="text-lg leading-relaxed text-text text-center" style={{ willChange: "opacity, transform" }}>
           print (
-          <span>&quot;
-            "I’m a final-year Diploma in Computer Science student with a passion for tech and a drive 
-            to keep learning and growing. While I’m still building my experience, I’m a fast learner 
-            who enjoys taking on new challenges. I work well with others, love exchanging ideas, and 
-            believe in showing up with a positive attitude, staying honest, and always giving my best."
-          &quot;</span>
+          <span>
+            &quot;I’m a final-year Diploma in Computer Science student with a passion for tech and a drive to keep learning and growing. While I’m still building my experience, I’m a fast learner who enjoys taking on new challenges. I work well with others, love exchanging ideas, and believe in showing up with a positive attitude, staying honest, and always giving my best.&quot;
+          </span>
           )
         </p>
 
