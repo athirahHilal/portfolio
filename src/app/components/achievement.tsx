@@ -126,9 +126,7 @@ const Achievement = forwardRef<HTMLDivElement, AchievementProps>(
               <FaGithub className="hover:text-white transition" />
             </a>
           </div>
-            <p className="text-xs sm:text-sm">
-            © {new Date().getFullYear()} Athirah's Portfolio. All rights reserved.
-            </p>
+            <p className="text-xs sm:text-sm"> © {new Date().getFullYear()} Athirah&apos;s Portfolio. All rights reserved. </p>
         </footer>
       </section>
     );
