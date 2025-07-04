@@ -71,7 +71,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>(
         }, 2000); 
         return () => clearTimeout(timeout);
       }
-    }, [isLoading, aboutRef]);
+    }, [isLoading, aboutRef, ref]);
 
 
     if (!isLoading) return null;
@@ -99,7 +99,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>(
           className="loader-text text-xl font-semibold text-foreground mt-4"
           style={{ willChange: "transform" }}
         >
-          &quot;Loading Athirah's Portfolio!&quot;
+        &quot;Loading Athirah&apos;s Portfolio!&quot;
         </p>
       </div>
     );

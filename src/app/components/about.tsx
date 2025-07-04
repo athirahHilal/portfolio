@@ -44,7 +44,7 @@ const About = forwardRef<HTMLDivElement, AboutProps>(({ isLoading }, ref) => {
           className="text-5xl tracking-tight sm:text-6xl text-[#f2acb2] text-center mt-0"
           style={{ willChange: "opacity, transform" }}
         >
-          about.me()
+          &quot;about.me()&quot;
         </h1>
 
         <div
@@ -114,7 +114,7 @@ const About = forwardRef<HTMLDivElement, AboutProps>(({ isLoading }, ref) => {
           style={{ willChange: "opacity, transform" }}
         >
           <FaDownload className="w-5 h-5" />
-          Resume
+          &quot;Resume&quot;
         </a>
       </div>
     </section>
