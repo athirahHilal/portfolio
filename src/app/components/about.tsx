@@ -35,10 +35,11 @@ const About = forwardRef<HTMLDivElement, AboutProps>(({ isLoading }, ref) => {
   }, [isLoading]);
 
   return (
-    <section
-      ref={ref}
-      className="w-full min-h-screen flex flex-col justify-center items-center pt-4 pb-8 px-4 sm:p-20 font-sans"
-    >
+      <section
+        ref={ref}
+        className="w-full min-h-screen flex flex-col justify-center items-center mt-10 sm:mt-0 pt-4 pb-8 px-4 sm:p-20 font-sans"
+      >
+
       <div className="flex flex-col gap-8 max-w-4xl w-full">
         <h1
           className="text-5xl tracking-tight sm:text-6xl text-[#f2acb2] text-center mt-0"
