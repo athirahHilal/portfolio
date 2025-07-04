@@ -8,8 +8,6 @@ import {
   FaMedal,
   FaLinkedin,
   FaInstagram,
-  FaFacebook,
-  FaTwitter,
 } from "react-icons/fa";
 import { BsBriefcaseFill } from "react-icons/bs";
 import Image from "next/image";
@@ -104,7 +102,7 @@ const Achievement = forwardRef<HTMLDivElement, AchievementProps>(
         <footer className="w-full mt-auto border-t border-[#f2acb2]/30 py-8 text-center text-sm sm:text-base text-[#f2acb2]">
           <div className="mb-4 flex justify-center gap-6 text-xl sm:text-2xl">
             <a
-              href="https://www.linkedin.com/in/athirahHilal"
+              href="https://www.linkedin.com/in/nur-athirah-992a6536a"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -126,22 +124,6 @@ const Achievement = forwardRef<HTMLDivElement, AchievementProps>(
               aria-label="Instagram"
             >
               <FaInstagram className="hover:text-white transition" />
-            </a>
-            <a
-              href="https://www.facebook.com/profile.php?id=61577100467149"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-            >
-              <FaFacebook className="hover:text-white transition" />
-            </a>
-            <a
-              href="https://twitter.com/CatSlaveeeee"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Twitter"
-            >
-              <FaTwitter className="hover:text-white transition" />
             </a>
           </div>
             <p className="text-xs sm:text-sm">
