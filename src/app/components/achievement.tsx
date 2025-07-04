@@ -7,7 +7,7 @@ import {
   FaAward,
   FaMedal,
   FaLinkedin,
-  FaInstagram,
+  FaGithub,
 } from "react-icons/fa";
 import { BsBriefcaseFill } from "react-icons/bs";
 import Image from "next/image";
@@ -118,18 +118,17 @@ const Achievement = forwardRef<HTMLDivElement, AchievementProps>(
               <BsBriefcaseFill className="hover:text-white transition" />
             </a>
             <a
-              href="https://www.instagram.com/roxx.002/"
+              href="https://github.com/athirahHilal"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Instagram"
+              aria-label="GitHub"
             >
-              <FaInstagram className="hover:text-white transition" />
+              <FaGithub className="hover:text-white transition" />
             </a>
           </div>
             <p className="text-xs sm:text-sm">
-            © {new Date().getFullYear()} Athirah&apos;s Portfolio. All rights reserved.
+            © {new Date().getFullYear()} Athirah's Portfolio. All rights reserved.
             </p>
-
         </footer>
       </section>
     );
