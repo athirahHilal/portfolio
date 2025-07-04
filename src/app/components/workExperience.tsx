@@ -60,9 +60,9 @@ const WorkExperience = forwardRef<HTMLDivElement, WorkExperienceProps>(({ isLoad
   return (
     <section
       ref={ref}
-      className="w-full min-h-screen bg-black text-white flex flex-col items-center pt-16 sm:pt-24 px-4 sm:px-8 md:px-12 font-sans"
+      className="w-full min-h-screen bg-black text-white flex flex-col items-center pt-10 sm:pt-24 px-12 sm:px-8 md:px-12 font-sans"
     >
-      <h1 className="text-3xl sm:text-5xl md:text-6xl tracking-tight text-[#f2acb2] text-center mt-16 sm:mt-20 mb-12">
+      <h1 className="text-3xl sm:text-5xl md:text-6xl tracking-tight text-[#f2acb2] text-center mt-16 sm:mt-10 mb-12">
         workExperience()
       </h1>
 
