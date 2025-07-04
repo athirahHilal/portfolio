@@ -99,7 +99,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>(
           className="loader-text text-xl font-semibold text-foreground mt-4"
           style={{ willChange: "transform" }}
         >
-          Loading Athirah's Portfolio!
+          &quot;Loading Athirah's Portfolio!&quot;
         </p>
       </div>
     );

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { forwardRef, useLayoutEffect } from "react";
+import { forwardRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { FaDownload } from "react-icons/fa";
@@ -65,14 +65,14 @@ const About = forwardRef<HTMLDivElement, AboutProps>(({ isLoading }, ref) => {
             <div>
               <p className="text-xl font-semibold uppercase text-[#f2acb2]">Full_Name</p>
               <p className="text-base text-text">
-                <span>"Nur Athirah Binti Hilalluddin"</span>
+                <span>&quot;Nur Athirah Binti Hilalluddin&quot;</span>
               </p>
             </div>
             <div>
               <p className="text-xl font-semibold uppercase text-[#f2acb2]">E-Mail</p>
               <p className="text-base text-text">
                 <a href="mailto:athirahhilalluddin@gmail.com" className="hover:underline">
-                  <span>"athirahhilalluddin@gmail.com"</span>
+                  <span>&quot;athirahhilalluddin@gmail.com&quot;</span>
                 </a>
               </p>
             </div>
@@ -85,11 +85,12 @@ const About = forwardRef<HTMLDivElement, AboutProps>(({ isLoading }, ref) => {
                   rel="noopener noreferrer"
                   className="hover:underline"
                 >
-                  <span>"https://github.com/athirahHilal"</span>
+                  <span>&quot;https://github.com/athirahHilal&quot;</span>
                 </a>
               </p>
             </div>
           </div>
+
         </div>
 
         <p
@@ -97,12 +98,12 @@ const About = forwardRef<HTMLDivElement, AboutProps>(({ isLoading }, ref) => {
           style={{ willChange: "opacity, transform" }}
         >
           print (
-          <span>
+          <span>&quot;
             "I’m a final-year Diploma in Computer Science student with a passion for tech and a drive 
             to keep learning and growing. While I’m still building my experience, I’m a fast learner 
             who enjoys taking on new challenges. I work well with others, love exchanging ideas, and 
             believe in showing up with a positive attitude, staying honest, and always giving my best."
-          </span>
+          &quot;</span>
           )
         </p>
 

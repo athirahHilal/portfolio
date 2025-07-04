@@ -7,11 +7,8 @@ import Image, { StaticImageData } from "next/image";
 
 import portfolio from "../asset/image/portfolio.png";
 import portfolio1 from "../asset/image/p1.png";
-import portfolio2 from "../asset/image/p1a.png";
 import task1 from "../asset/image/p2.png";
-import task2 from "../asset/image/p2a.png";
 import ecommerce1 from "../asset/image/p3.png";
-import ecommerce2 from "../asset/image/p3a.png";
 import blog1 from "../asset/image/p4.png";
 
 interface Project {
